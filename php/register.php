@@ -1,5 +1,4 @@
 <?php
-
 // 1 Create and obtain variables
 // Securing variables and gathered data
 // request info that had been posted or gotten (htmlentities makes it more secure)
