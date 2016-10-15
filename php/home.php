@@ -10,9 +10,10 @@
     <nav>
       <ul>
         <!-- http://www.webdesignerdepot.com/2012/10/creating-a-modal-window-with-html5-and-css3/ -->
+        <!-- User Details -->
         <li>
-          <a href="#openModal">User Detials</a>
-          <div id="openModal" class="modalDialog">
+          <a href="#openDetails">User Detials</a>
+          <div id="openDetails" class="modalDialog">
             <div>
   		        <a href="#close" title="Close" class="close">X</a>
   		        <h2>User Detials</h2>
@@ -20,13 +21,16 @@
   	         </div>
            </div>
          </li>
+         <!-- Log Out -->
          <li>
-           <a href="#openModal">log Out</a>
-           <div id="openModal" class="modalDialog">
+           <a href="#openLogOut">log Out</a>
+           <div id="openLogOut" class="modalDialog">
              <div>
    		        <a href="#close" title="Close" class="close">X</a>
-   		        <h2>User Detials</h2>
-   		        <p>Lorum ipsum</p>
+   		        <h2>Log Out</h2>
+              <form action="index.php">
+                <input type="submit" value="Log Out of Account" />
+              </form>
    	         </div>
             </div>
           </li>
