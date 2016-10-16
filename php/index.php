@@ -25,3 +25,20 @@
     </label>
   </p>
 </form>
+
+<form class="contact-form" name="contact-form" method="post" action="login.php">
+  <p>
+    <label>Username:<br />
+      <input type="text" name="username" class="username" size="48" />
+    </label>
+  </p>
+    <label>Password:<br />
+      <input type="password" name="password" class="password" size="48" />
+    </label>
+  </p>
+  <p>
+    <label>
+      <input type="submit" name="button" class="submit-button" class="button" value="Send" />
+    </label>
+  </p>
+</form>

@@ -17,7 +17,15 @@
             <div>
   		        <a href="#close" title="Close" class="close">X</a>
   		        <h2>User Detials</h2>
-  		        <p>Lorum ipsum</p>
+  		        <p>
+                <?php
+                  session_start();
+                  foreach($_SESSION['userDetails'] as $item)
+                  {
+                    echo $item. "<br />";
+                  }
+                ?>
+             </p>
   	         </div>
            </div>
          </li>
@@ -36,6 +44,10 @@
           </li>
       </ul>
     </nav>
+    <div id="latlong">
+    <p>Latitude: <input size="20" type="text" id="latbox" name="lat" ></p>
+    <p>Longitude: <input size="20" type="text" id="lngbox" name="lng" ></p>
+  </div>
     <div id="map"></div>
     <script>
       // Note: This example requires that you consent to location sharing when
@@ -45,6 +57,7 @@
 
       function initMap()
       {
+        var marker;
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -34.397, lng: 150.644},
           zoom: 15
@@ -77,6 +90,14 @@
        // This event listener calls addMarker() when the map is clicked.
        google.maps.event.addListener(map, 'click', function(event){
          addMarker(event.latLng, map);
+         // Get the current location of the marker and send it to the database.
+         document.getElementById("latbox").value = marker.getPosition().lat();
+         document.getElementById("lngbox").value = marker.getPosition().lng();
+         var pos = {
+           lat: marker.getPosition().lat(),
+           lng: marker.getPosition().lng()
+         };
+         alert(pos.lng);
        });
 
         // Adds a marker to the map.
@@ -84,10 +105,10 @@
         {
           // Add the marker at the clicked location, and add the next-available label
           // from the array of alphabetical characters.
-          var marker = new google.maps.Marker({
+          marker = new google.maps.Marker({
           position: location,
           label: "*",
-          map: map
+          map: map,
                  });
         }
       }
