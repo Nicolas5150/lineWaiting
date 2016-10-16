@@ -82,6 +82,25 @@ class access{
 
         return $returnArray;
     }
+
+    public function addLocation($lat){
+      $user = "billllll";
+      // http://www.phpeasystep.com/mysql/10.html
+      $sql = "UPDATE users SET lat=\".$lat.\" WHERE username='".$user."'";
+
+      // Store query result in statement var
+      $statement = $this->$connection->prepare($sql);
+
+      //Check for statment
+      if(!$statement){
+          throw new Exception($statement->error);
+      }
+      // Bind as strings with all 5 variables - prepairing
+      $statement->bind_param("s", $lat);
+
+      $returnValue = $statement->execute();
+
+    }
 }
 
 ?>

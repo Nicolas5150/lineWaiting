@@ -57,10 +57,12 @@ if($result)
     $_SESSION['userDetails'][] = $user["email"];
     $_SESSION['userDetails'][] = $user["fullName"];
 
+    /* Testing Purpose
     foreach($_SESSION['userDetails'] as $item)
     {
       echo $item;
     }
+    */
 }
 
 else{
@@ -71,7 +73,10 @@ else{
 // 4 Close connection
 $access->dissconnect();
 
+// TURN BACK ON FOR IOS LATER
 // 5 Json data
-echo json_encode($returnArray);
+// echo json_encode($returnArray);
+
+header("Location: home.php");
 return;
 ?>

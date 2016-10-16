@@ -5,6 +5,7 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="../css/waiting.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   </head>
   <body>
     <nav>
@@ -63,9 +64,10 @@
       function initMap()
       {
         var marker;
+        var lat;
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -34.397, lng: 150.644},
-          zoom: 15
+          zoom: 18
         });
         var infoWindow = new google.maps.InfoWindow({map: map});
 
@@ -102,6 +104,17 @@
            lat: marker.getPosition().lat(),
            lng: marker.getPosition().lng()
          };
+
+         lat = marker.getPosition().lat();
+
+         $.ajax({
+         			url: 'http://localhost/lineWaiting/php/sendToServer.php',
+         			type: 'post',
+         			data: '?lat=' + lat,
+              success: function(result){
+            alert("done");}
+         		});
+
          alert(pos.lng);
        });
 
@@ -117,6 +130,7 @@
           map: map,
                  });
         }
+
       }
 
       // Error Handling
