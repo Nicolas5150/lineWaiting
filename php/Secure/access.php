@@ -63,6 +63,7 @@ class access{
     // Select user data via usernames in database
     public function getUser($username){
         // Select INTO users SET   This is SQL syntax and "users" in the table name
+        // http://php.net/manual/en/function.mysql-fetch-array.php
         $sql = "SELECT * FROM users WHERE username='".$username."'";
         // Assign result from $sql into $result var
         $result = $this->connection->query($sql);

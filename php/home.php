@@ -19,6 +19,7 @@
   		        <h2>User Detials</h2>
   		        <p>
                 <?php
+                  //http://stackoverflow.com/questions/17525499/php-sessions-select-from-users-where-username-sessionuser
                   session_start();
                   foreach($_SESSION['userDetails'] as $item)
                   {
@@ -36,7 +37,7 @@
              <div>
    		        <a href="#close" title="Close" class="close">X</a>
    		        <h2>Log Out</h2>
-              <form action="index.php">
+              <form action="logout.php">
                 <input type="submit" value="Log Out of Account" />
               </form>
    	         </div>
@@ -45,11 +46,15 @@
       </ul>
     </nav>
     <div id="latlong">
-    <p>Latitude: <input size="20" type="text" id="latbox" name="lat" ></p>
-    <p>Longitude: <input size="20" type="text" id="lngbox" name="lng" ></p>
+    Latitude: <input size="20" type="text" id="latbox" name="lat" >
+    Longitude: <input size="20" type="text" id="lngbox" name="lng" >
   </div>
+    <div id="wrapper" style="height:100%; width:100%;">
     <div id="map"></div>
+    </div>
     <script>
+      // https://developers.google.com/maps/documentation/javascript/geolocation
+
       // Note: This example requires that you consent to location sharing when
       // prompted by your browser. If you see the error "The Geolocation service
       // failed.", it means you probably did not give permission for the browser to
@@ -100,6 +105,7 @@
          alert(pos.lng);
        });
 
+        // https://developers.google.com/maps/documentation/javascript/examples/marker-labels
         // Adds a marker to the map.
         function addMarker(location, map)
         {

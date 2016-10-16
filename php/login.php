@@ -35,7 +35,10 @@ $found = $access->getUser($username);
  {
    // Set username session variable
    session_start();
-   $_SESSION['username'] = $_POST['username'];
+   $_SESSION['userDetails'] = array();
+   $_SESSION['userDetails'][] = $found['username'];
+   $_SESSION['userDetails'][] = $found['fullName'];
+   $_SESSION['userDetails'][] = $found['email'];
    // 4 Close connection
    $access->dissconnect();
    // Jump to secured page

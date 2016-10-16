@@ -50,7 +50,7 @@ if($result)
     $returnArray["fullName"] = $user["fullName"];
     $returnArray["ava"] = $user["ava"];
 
-    // start a new session bassed off the users new account
+    // Start a new session bassed off the users new account
     session_start();
     $_SESSION['userDetails'] = array();
     $_SESSION['userDetails'][] = $user["username"];
